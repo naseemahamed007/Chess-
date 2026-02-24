@@ -55,24 +55,34 @@ st.divider()
 
 # Organizer
 st.markdown("## 👤 Organizer")
+# Organizer Section
+st.markdown("## 👤 Organizing Team")
 
-st.write("""
-Naseem ahamed 
-Director of Nas Matrix Chess
-Arena International Master AIM
+st.markdown("""
+### 🌟 Leadership & Management
 
+**Naseem Ahamed**  
+Arena International Master (AIM)  
+Director – Nas Matrix Chess  
 
+---
 
-Omer Kose 
-Organizer 
+### 📋 Tournament Organizer
 
+**Omer Kose**  
+Chief Organizer  
 
+---
 
-Abuzer 
-Media Head
+### 📢 Media & Promotions
+
+**Abuzer**  
+Media Head  
 """)
 
 st.divider()
+
+
 
 # Contact
 st.markdown("## 📞 Contact")
