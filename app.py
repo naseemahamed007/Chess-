@@ -6,8 +6,6 @@ st.set_page_config(
     layout="wide"
 )
 
-# Banner
-st.image("banner.png", use_container_width=True)
 
 # Title
 st.markdown("""
