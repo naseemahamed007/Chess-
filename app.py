@@ -57,9 +57,19 @@ st.divider()
 st.markdown("## 👤 Organizer")
 
 st.write("""
-Director: Naseem Ahamed  
-Organization: Nas Matrix Chess  
-Title: Arena International Master (AIM)
+Naseem ahamed 
+Director of Nas Matrix Chess
+Arena International Master AIM
+
+
+
+Omer Kose 
+Organizer 
+
+
+
+Abuzer 
+Media Head
 """)
 
 st.divider()
