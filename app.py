@@ -6,6 +6,9 @@ st.set_page_config(
     layout="wide"
 )
 
+# Google Form Link
+FORM_URL = "https://forms.gle/eX3hB9CLruzJpLk26"
+
 
 # Title
 st.markdown("""
@@ -53,9 +56,7 @@ All players will receive official certificates and recognition.
 
 st.divider()
 
-# Organizer
-st.markdown("## 👤 Organizer")
-# Organizer Section
+# Organizing Team
 st.markdown("## 👤 Organizing Team")
 
 st.markdown("""
@@ -82,8 +83,6 @@ Media Head
 
 st.divider()
 
-
-
 # Contact
 st.markdown("## 📞 Contact")
 
@@ -92,12 +91,30 @@ st.write("📧 Email: nasmatrixchess@gmail.com")
 
 st.divider()
 
-# Register Button
+# Register Button (Direct Google Form)
 colA, colB, colC = st.columns([1, 2, 1])
 
 with colB:
-    if st.button("📝 REGISTER NOW", use_container_width=True):
-        st.switch_page("pages/register.py")
+    st.markdown(
+        f"""
+        <a href="{FORM_URL}" target="_blank">
+            <button style="
+            width:100%;
+            background-color:#1f77b4;
+            color:white;
+            padding:15px;
+            font-size:20px;
+            border:none;
+            border-radius:10px;
+            cursor:pointer;">
+            📝 REGISTER NOW
+            </button>
+        </a>
+        """,
+        unsafe_allow_html=True
+    )
+
+st.divider()
 
 # Footer
 st.markdown("""
