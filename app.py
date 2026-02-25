@@ -92,26 +92,13 @@ st.write("📧 Email: nasmatrixchess@gmail.com")
 st.divider()
 
 # Register Button (Direct Google Form)
-colA, colB, colC = st.columns([1, 2, 1])
 
+# Register Button (Safe Link)
 with colB:
-    st.markdown(
-        f"""
-        <a href="{FORM_URL}" target="_blank">
-            <button style="
-            width:100%;
-            background-color:#1f77b4;
-            color:white;
-            padding:15px;
-            font-size:20px;
-            border:none;
-            border-radius:10px;
-            cursor:pointer;">
-            📝 REGISTER NOW
-            </button>
-        </a>
-        """,
-        unsafe_allow_html=True
+    st.link_button(
+        "📝 REGISTER NOW",
+        "https://forms.gle/eX3hB9CLruzJpLk26",
+        use_container_width=True
     )
 
 st.divider()
