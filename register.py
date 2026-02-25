@@ -3,61 +3,60 @@ import pandas as pd
 from datetime import datetime
 import os
 
-st.set_page_config(
-    page_title="Tournament Registration",
-    layout="centered"
-)
+st.set_page_config(page_title="Tournament Registration")
 
-st.title("📝 Player Registration")
+st.title("📝 Chess Tournament Registration")
 
-st.write("Fill the form carefully. All details must be correct.")
-
-# Input Fields
-name = st.text_input("Full Name")
-username = st.text_input("Chess.com Username")
-email = st.text_input("Email Address")
-phone = st.text_input("Phone Number")
-age = st.number_input("Age", min_value=5, max_value=100)
+st.write("Fill the form to register for the tournament.")
 
 st.divider()
 
+# Form
+with st.form("registration_form"):
+
+    name = st.text_input("Full Name *")
+    chess_id = st.text_input("Chess.com Username *")
+    phone = st.text_input("Phone Number *")
+    email = st.text_input("Email Address")
+    age = st.number_input("Age", 5, 100)
+
+    submit = st.form_submit_button("✅ Register")
+
 # File name
-file_name = "players_data.csv"
+FILE = "registrations.csv"
 
-# Submit Button
-if st.button("✅ Submit Registration"):
+# When submitted
+if submit:
 
-    if name and username and email and phone:
+    if name and chess_id and phone:
 
         data = {
             "Name": name,
-            "Username": username,
-            "Email": email,
+            "Chess ID": chess_id,
             "Phone": phone,
+            "Email": email,
             "Age": age,
             "Time": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         }
 
         df_new = pd.DataFrame([data])
 
-        # If file exists → append
-        if os.path.exists(file_name):
-            df_old = pd.read_csv(file_name)
+        # Save to file
+        if os.path.exists(FILE):
+            df_old = pd.read_csv(FILE)
             df_all = pd.concat([df_old, df_new], ignore_index=True)
-            df_all.to_csv(file_name, index=False)
-
-        # If file not exists → create
+            df_all.to_csv(FILE, index=False)
         else:
-            df_new.to_csv(file_name, index=False)
+            df_new.to_csv(FILE, index=False)
 
         st.success("🎉 Registration Successful!")
         st.balloons()
 
     else:
-        st.warning("⚠️ Please fill all fields correctly.")
+        st.error("⚠️ Please fill all required fields (*)")
 
 st.divider()
 
-# Back Button
+# Back button
 if st.button("⬅️ Back to Home"):
     st.switch_page("app.py")
