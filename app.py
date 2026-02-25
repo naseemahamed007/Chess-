@@ -94,6 +94,10 @@ st.divider()
 # Register Button (Direct Google Form)
 
 # Register Button (Safe Link)
+# Register Button (Safe Link)
+
+colA, colB, colC = st.columns([1, 2, 1])  # <-- This creates colB
+
 with colB:
     st.link_button(
         "📝 REGISTER NOW",
