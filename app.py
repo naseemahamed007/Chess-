@@ -88,7 +88,7 @@ st.divider()
 st.markdown("## 📞 Contact & Social Media")
 
 st.write("📱 WhatsApp: 7094602011")
-st.write("📧 Email: nasmatrixchess@gmail.com")
+st.write("📧 Email: naseemishere0@gmail.com")
 
 st.markdown(
     """
