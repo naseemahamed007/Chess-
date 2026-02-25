@@ -84,10 +84,21 @@ Media Head
 st.divider()
 
 # Contact
-st.markdown("## 📞 Contact")
+# Contact
+st.markdown("## 📞 Contact & Social Media")
 
 st.write("📱 WhatsApp: 7094602011")
 st.write("📧 Email: nasmatrixchess@gmail.com")
+
+st.markdown(
+    """
+    📸 Instagram: 
+    <a href="https://instagram.com/nasmatrixchess" target="_blank">
+    @nasmatrixchess
+    </a>
+    """,
+    unsafe_allow_html=True
+)
 
 st.divider()
 
