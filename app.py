@@ -36,7 +36,7 @@ with col1:
 
 with col2:
     st.markdown("### 💰 Fees & Awards")
-    st.write("💵 Entry Fee: ₹100")
+    st.write("💵 Entry Fee: ₹150")
     st.write("🏅 Medal: All Participants")
     st.write("📜 Certificate: All Players")
     st.write("🏆 Trophies: Winner & Runner-up")
