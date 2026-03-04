@@ -1,8 +1,11 @@
+# data.py
+
 tournaments = {
+
     "chennai_open_2026": {
 
-        "title": "Chennai Open Chess Tournament",
-        "organizer": "Nas Matrix Chess",
+        "title": "Chennai Open Chess Championship",
+        "organizer": "Nas Matrix Chess Association",
 
         "date": "28 March 2026",
         "mode": "Online",
@@ -12,15 +15,15 @@ tournaments = {
 
         "fee": "₹150",
 
-        "awards": [
-            "Medal for All",
+        "prizes": [
+            "Medal for All Players",
             "Certificate for All",
             "Trophy for Winner & Runner-up"
         ],
 
         "about": """
-Professional online tournament promoting
-discipline, fair play, and excellence.
+A professionally organized online tournament
+promoting discipline, fair play, and excellence.
 """,
 
         "team": {
@@ -32,7 +35,8 @@ discipline, fair play, and excellence.
         "contact": {
             "phone": "7094602011",
             "email": "naseemishere0@gmail.com",
-            "instagram": "@nasmatrixchess"
+            "instagram": "https://instagram.com/nasmatrixchess"
         }
     }
+
 }
