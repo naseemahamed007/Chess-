@@ -79,7 +79,7 @@ for key, t in tournaments.items():
         if st.button("View Details", key=key):
 
             st.session_state["tournament"] = key
-            st.switch_page("tournament.py")
+            st.switch_page("pages/1_Tournament.py")
 
     i += 1
 
