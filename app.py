@@ -1,127 +1,71 @@
 import streamlit as st
+from data import tournaments
 
-# Page Settings
 st.set_page_config(
-    page_title="Chennai Open Chess Tournament",
+    page_title="Nas Matrix Chess",
     layout="wide"
 )
 
-# Google Form Link
-FORM_URL = "https://forms.gle/eX3hB9CLruzJpLk26"
-
-
-# Title
+# Theme
 st.markdown("""
-<h1 style="text-align:center; color:#1f3c88;">
-🏆 Chennai Open Chess Tournament ♟️
-</h1>
+<style>
+body {
+    background-color:#0f172a;
+    color:white;
+}
+.stButton>button {
+    background:gold;
+    color:black;
+    border-radius:8px;
+    font-weight:bold;
+}
+</style>
+""", unsafe_allow_html=True)
 
-<h3 style="text-align:center; color:gray;">
-Organized by Nas Matrix Chess
-</h3>
+# Header
+st.markdown("""
+<h1 style="text-align:center;">♟️ Nas Matrix Chess Association</h1>
+<h4 style="text-align:center;color:gray;">Official Tournament Platform</h4>
 """, unsafe_allow_html=True)
 
 st.divider()
 
-# Info Section
-col1, col2 = st.columns(2)
-
-with col1:
-    st.markdown("### 📅 Tournament Details")
-    st.write("🗓️ Date: 28 March 2026")
-    st.write("🌐 Mode: Online")
-    st.write("♟️ Platform: Chess.com")
-    st.write("⚡ Format: Rapid | Swiss System")
-    st.write("⏱️ Time Control: 10 Minutes")
-
-with col2:
-    st.markdown("### 💰 Fees & Awards")
-    st.write("💵 Entry Fee: ₹150")
-    st.write("🏅 Medal: All Participants")
-    st.write("📜 Certificate: All Players")
-    st.write("🏆 Trophies: Winner & Runner-up")
-
-st.divider()
-
-# About
-st.markdown("## 📖 About Tournament")
+# Association Info
+st.markdown("## 🏛️ Association Details")
 
 st.write("""
-The Chennai Open Chess Tournament is a professionally organized
-online competition that promotes discipline, fair play,
-and competitive excellence.
-
-All players will receive official certificates and recognition.
+Nas Matrix Chess promotes competitive excellence, discipline,
+and professional tournament management.
 """)
 
 st.divider()
 
-# Organizing Team
-st.markdown("## 👤 Organizing Team")
+# Tournaments Section
+st.markdown("## 🏆 Upcoming Tournaments")
 
-st.markdown("""
-### 🌟 Leadership & Management
+cols = st.columns(3)
 
-**Naseem Ahamed**  
-Arena International Master (AIM)  
-Director – Nas Matrix Chess  
+i = 0
+for key, t in tournaments.items():
 
----
+    with cols[i % 3]:
 
-### 📋 Tournament Organizer
+        st.subheader(t["name"])
+        st.write("📅", t["date"])
+        st.write("💰", t["fee"])
 
-**Omer Kose**  
-Chief Organizer  
+        if st.button("View Details", key=key):
 
----
+            st.session_state["tournament"] = key
+            st.switch_page("tournament.py")
 
-### 📢 Media & Promotions
-
-**Abuzer**  
-Media Head  
-""")
-
-st.divider()
-
-# Contact
-# Contact
-st.markdown("## 📞 Contact & Social Media")
-
-st.write("📱 WhatsApp: 7094602011")
-st.write("📧 Email: naseemishere0@gmail.com")
-
-st.markdown(
-    """
-    📸 Instagram: 
-    <a href="https://instagram.com/nasmatrixchess" target="_blank">
-    @nasmatrixchess
-    </a>
-    """,
-    unsafe_allow_html=True
-)
-
-st.divider()
-
-# Register Button (Direct Google Form)
-
-# Register Button (Safe Link)
-# Register Button (Safe Link)
-
-colA, colB, colC = st.columns([1, 2, 1])  # <-- This creates colB
-
-with colB:
-    st.link_button(
-        "📝 REGISTER NOW",
-        "https://forms.gle/eX3hB9CLruzJpLk26",
-        use_container_width=True
-    )
+    i += 1
 
 st.divider()
 
 # Footer
 st.markdown("""
-<hr>
-<p style="text-align:center; color:gray;">
-© 2026 Nas Matrix Chess | All Rights Reserved
+<p style="text-align:center;color:gray;">
+© 2026 Nas Matrix Chess
 </p>
 """, unsafe_allow_html=True)
