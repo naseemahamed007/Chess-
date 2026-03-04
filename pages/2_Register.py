@@ -73,4 +73,4 @@ st.divider()
 
 # Back
 if st.button("⬅️ Back"):
-    st.switch_page("tournament.py")
+    st.switch_page("pages/1_Tournament.py")
