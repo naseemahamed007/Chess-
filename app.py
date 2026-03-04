@@ -1,6 +1,9 @@
+# app.py
+
 import streamlit as st
 from data import tournaments
 
+# Page Config
 st.set_page_config(
     page_title="Nas Matrix Chess",
     layout="wide"
@@ -9,50 +12,69 @@ st.set_page_config(
 # Theme
 st.markdown("""
 <style>
+
 body {
-    background-color:#0f172a;
+    background-color:#020617;
     color:white;
 }
+
 .stButton>button {
-    background:gold;
+    background:#facc15;
     color:black;
-    border-radius:8px;
+    border-radius:10px;
     font-weight:bold;
+    padding:10px;
 }
+
+.card {
+    background:#020617;
+    border:1px solid #1e293b;
+    padding:20px;
+    border-radius:12px;
+}
+
 </style>
 """, unsafe_allow_html=True)
 
 # Header
 st.markdown("""
 <h1 style="text-align:center;">♟️ Nas Matrix Chess Association</h1>
-<h4 style="text-align:center;color:gray;">Official Tournament Platform</h4>
+<h4 style="text-align:center;color:gray;">
+Official Tournament Platform
+</h4>
 """, unsafe_allow_html=True)
 
 st.divider()
 
 # Association Info
-st.markdown("## 🏛️ Association Details")
+st.markdown("## 🏛️ About Association")
 
 st.write("""
-Nas Matrix Chess promotes competitive excellence, discipline,
-and professional tournament management.
+Nas Matrix Chess Association organizes professional chess tournaments,
+training programs, and competitive events to build strong players
+and strong character.
 """)
 
 st.divider()
 
-# Tournaments Section
+# Tournament Section
 st.markdown("## 🏆 Upcoming Tournaments")
 
 cols = st.columns(3)
 
 i = 0
+
 for key, t in tournaments.items():
 
     with cols[i % 3]:
 
-        st.subheader(t["name"])
-        st.write("📅", t["date"])
-        st.write("💰", t["fee"])
+        st.markdown(f"""
+        <div class="card">
+        <h3>{t["title"]}</h3>
+        <p>📅 {t["date"]}</p>
+        <p>💰 {t["fee"]}</p>
+        </div>
+        """, unsafe_allow_html=True)
 
         if st.button("View Details", key=key):
 
@@ -66,6 +88,6 @@ st.divider()
 # Footer
 st.markdown("""
 <p style="text-align:center;color:gray;">
-© 2026 Nas Matrix Chess
+© 2026 Nas Matrix Chess | All Rights Reserved
 </p>
 """, unsafe_allow_html=True)
