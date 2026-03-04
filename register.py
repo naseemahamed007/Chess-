@@ -1,13 +1,23 @@
+# register.py
+
 import streamlit as st
 import pandas as pd
 from datetime import datetime
 import os
+from data import tournaments
 
-st.set_page_config(page_title="Tournament Registration")
+st.set_page_config(page_title="Registration")
 
-st.title("📝 Chess Tournament Registration")
+# Safety
+if "tournament" not in st.session_state:
+    st.switch_page("app.py")
 
-st.write("Fill the form to register for the tournament.")
+t = tournaments[st.session_state["tournament"]]
+
+# Title
+st.title("📝 Tournament Registration")
+
+st.subheader(t["title"])
 
 st.divider()
 
@@ -17,20 +27,21 @@ with st.form("registration_form"):
     name = st.text_input("Full Name *")
     chess_id = st.text_input("Chess.com Username *")
     phone = st.text_input("Phone Number *")
-    email = st.text_input("Email Address")
+    email = st.text_input("Email")
     age = st.number_input("Age", 5, 100)
 
-    submit = st.form_submit_button("✅ Register")
+    submit = st.form_submit_button("✅ Submit Registration")
 
-# File name
-FILE = "registrations.csv"
+# File per tournament
+FILE = f"registrations_{st.session_state['tournament']}.csv"
 
-# When submitted
+# Save
 if submit:
 
     if name and chess_id and phone:
 
         data = {
+            "Tournament": t["title"],
             "Name": name,
             "Chess ID": chess_id,
             "Phone": phone,
@@ -41,22 +52,25 @@ if submit:
 
         df_new = pd.DataFrame([data])
 
-        # Save to file
         if os.path.exists(FILE):
+
             df_old = pd.read_csv(FILE)
-            df_all = pd.concat([df_old, df_new], ignore_index=True)
+            df_all = pd.concat([df_old, df_new])
             df_all.to_csv(FILE, index=False)
+
         else:
+
             df_new.to_csv(FILE, index=False)
 
         st.success("🎉 Registration Successful!")
         st.balloons()
 
     else:
-        st.error("⚠️ Please fill all required fields (*)")
+
+        st.error("⚠️ Please fill all required fields")
 
 st.divider()
 
-# Back button
-if st.button("⬅️ Back to Home"):
-    st.switch_page("app.py")
+# Back
+if st.button("⬅️ Back"):
+    st.switch_page("tournament.py")
